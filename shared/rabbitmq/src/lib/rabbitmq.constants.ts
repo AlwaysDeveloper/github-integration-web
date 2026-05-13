@@ -1,0 +1,5 @@
+export const RABBITMQ_OPTIONS = Symbol('RABBITMQ_OPTIONS');
+
+export const RABBITMQ_CONSUMER = Symbol(
+  'RABBITMQ_CONSUMER',
+);
