@@ -17,6 +17,9 @@
     },
     {
       "path": "./shared/common"
+    },
+    {
+      "path": "./apps/backend-e2e"
     }
   ]
 }
