@@ -65,7 +65,7 @@ export function useRepos() {
       if (repo.isSubscribed) {
         await httpClient.delete(`/api/repositories/${repo.id}/unsubscribe`);
       } else {
-        await httpClient.delete(`/api/repositories/${repo.id}/subscribe`);
+        await httpClient.post(`/api/repositories/${repo.id}/subscribe`);
       }
 
       setRepos((prev) =>
