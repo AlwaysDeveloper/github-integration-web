@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { RepositoryEntity } from './repository.entity';
+import type { RepositoryEntity } from './repository.entity';
 
 @Entity('users')
 export class UserEntity {
@@ -55,6 +55,6 @@ export class UserEntity {
   @UpdateDateColumn()
   updatedAt!: Date;
 
-  @OneToMany(() => RepositoryEntity, (repo) => repo.user)
+  @OneToMany(() => require('./repository.entity').RepositoryEntity, (repo: RepositoryEntity) => repo.user)
   repositories!: RepositoryEntity[];
 }

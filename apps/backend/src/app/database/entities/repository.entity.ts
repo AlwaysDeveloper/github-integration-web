@@ -8,8 +8,8 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
-import { UserEntity } from './user.entity';
-import { PullRequestEntity } from './pull-request.entity';
+import type { UserEntity } from './user.entity';
+import type { PullRequestEntity } from './pull-request.entity';
 
 @Entity('repositories')
 export class RepositoryEntity {
@@ -55,7 +55,7 @@ export class RepositoryEntity {
   @Column({ type: 'timestamp', nullable: true })
   updatedAtGit!: Date;
 
-  @ManyToOne(() => UserEntity, (user) => user.repositories, {
+  @ManyToOne(() => require('./user.entity').UserEntity, (user: UserEntity) => user.repositories, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'userId' })
@@ -73,6 +73,6 @@ export class RepositoryEntity {
   @Column({ type: 'boolean', default: false })
   isSubscribed!: boolean;
 
-  @OneToMany(() => PullRequestEntity, (pullRequest) => pullRequest.repository)
+  @OneToMany(() => require('./pull-request.entity').PullRequestEntity, (pullRequest: PullRequestEntity) => pullRequest.repository)
   pullRequests!: PullRequestEntity[];
 }

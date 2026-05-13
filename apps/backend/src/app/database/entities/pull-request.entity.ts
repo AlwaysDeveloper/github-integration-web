@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { RepositoryEntity } from './repository.entity';
+import type { RepositoryEntity } from './repository.entity';
 
 
 @Entity('pull_requests')
@@ -43,8 +43,8 @@ export class PullRequestEntity {
   githubRepositoryId!: string;
 
   @ManyToOne(
-    () => RepositoryEntity,
-    (repository) => repository.pullRequests,
+    () => require('./repository.entity').RepositoryEntity,
+    (repository: RepositoryEntity) => repository.pullRequests,
     {
       onDelete: 'CASCADE',
     },
