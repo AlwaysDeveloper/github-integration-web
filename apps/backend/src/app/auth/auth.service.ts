@@ -36,7 +36,8 @@ export class AuthService {
         token: token,
         lastProfileUpdate: new Date(),
         id: undefined,
-        lastRepoUpdate: undefined
+        lastRepoUpdate: undefined,
+        email: userDeatils.email
       };
       let user = await this.userService.getUserByGitHubId(gitUser.githubId);
       if (!user) {
